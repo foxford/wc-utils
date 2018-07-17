@@ -1,12 +1,12 @@
 {
-  "name": "@netology-group/webcomponents-utils",
+  "name": "@netology-group/wc-utils",
   "version": "0.1.0",
-  "description": "",
+  "description": "Webcomponent's utilities",
   "repository": {
-    "url": "https://github.com/netology-group/webcomponents-utils"
+    "url": "https://github.com/netology-group/wc-utils"
   },
   "bugs": {
-    "url": "https://github.com/netology-group/webcomponents-utils/issues"
+    "url": "https://github.com/netology-group/wc-utils/issues"
   },
   "main": "lib/index.mjs",
   "directories": {
