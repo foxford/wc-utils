@@ -1,22 +1,22 @@
 {
   "name": "@netology-group/wc-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Webcomponent's utilities",
-  "repository": {
-    "url": "https://github.com/netology-group/wc-utils"
-  },
   "bugs": {
     "url": "https://github.com/netology-group/wc-utils/issues"
   },
-  "main": "lib/index.mjs",
+  "repository": {
+    "url": "https://github.com/netology-group/wc-utils"
+  },
+  "license": "MIT",
+  "author": "",
+  "main": "lib/index",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "eslint --ext .mjs ."
+    "test": "eslint ."
   },
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@polymer/lit-element": "^0.5.2"
   },
