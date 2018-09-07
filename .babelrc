@@ -1,0 +1,15 @@
+{
+  "plugins":["babel-plugin-transform-object-rest-spread"],
+  "env": {
+    "cjs": {
+      "plugins": [
+        "annotate-pure-calls"
+      ]
+    },
+    "es": {
+      "plugins": [
+        "annotate-pure-calls"
+      ]
+    }
+  },
+}
