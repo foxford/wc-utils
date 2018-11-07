@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-utils",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Webcomponent's utilities",
   "bugs": {
     "url": "https://github.com/netology-group/wc-utils/issues"
@@ -15,17 +15,18 @@
     "es",
     "dist"
   ],
-  "main": "lib/index",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "directories": {
     "lib": "src"
   },
   "scripts": {
     "prebuild": "rm -rf dist lib es",
+    "build": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir lib",
     "build:es": "BABEL_ENV=es babel src --out-dir es",
-    "build:umd": "rollup -c -o dist/index.js",
-    "build:umd:min": "NODE_ENV=production rollup -c -o dist/index.min.js",
-    "build": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:umd": "BABEL_ENV=rollup rollup -c -o dist/index.js",
+    "build:umd:min": "NODE_ENV=production BABEL_ENV=rollup rollup -c -o dist/index.min.js",
     "prepublishOnly": "npm run test && npm run build",
     "test": "eslint ."
   },
@@ -33,11 +34,16 @@
     "@polymer/lit-element": "^0.5.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env": "^7.1.5",
     "babel-plugin-annotate-pure-calls": "^0.3.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint": "^5.0.1",
     "eslint-config-adequate": "^1.1.0",
     "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-terser": "^2.0.2"
   }
 }
