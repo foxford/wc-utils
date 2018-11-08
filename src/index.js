@@ -1,3 +1,1 @@
-import * as mixins from './mixins/mixins'
-
-export { mixins }
+export * from './mixins/index'

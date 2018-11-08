@@ -1,5 +1,5 @@
 {
-  "plugins": ["@babel/plugin-proposal-object-rest-spread"],
+  "plugins": ["babel-plugin-transform-object-rest-spread"],
   "env": {
     "es": {
       "plugins": [
@@ -8,10 +8,10 @@
     },
     "cjs": {
       "presets": [
-        ["@babel/preset-env",{
+        ["babel-preset-env",{
           "modules": false,
           "targets":{
-            "chrome": 43,
+            "chrome": 46,
             "firefox": 43,
             "safari": 10,
             "ios": 10,
@@ -23,15 +23,15 @@
       ],
       "plugins": [
         "babel-plugin-annotate-pure-calls",
-        "@babel/plugin-transform-modules-commonjs"
+        "babel-plugin-transform-es2015-modules-commonjs"
       ]
     },
     "rollup": {
       "presets": [
-        ["@babel/preset-env",{
+        ["babel-preset-env",{
           "modules": false,
           "targets":{
-            "chrome": 43,
+            "chrome": 46,
             "firefox": 43,
             "safari": 10,
             "ios": 10,
@@ -40,7 +40,8 @@
             "ie": 9
           }
         }]
-      ]
+      ],
+      "plugins": ["babel-plugin-external-helpers"]
     }
   },
 }

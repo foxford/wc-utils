@@ -1,5 +1,8 @@
 import { terser as uglify } from 'rollup-plugin-terser'
 import babel from 'rollup-plugin-babel'
+import json from 'rollup-plugin-json'
+
+import { directories } from './package.json'
 
 const entry = process.env.ENTRY || 'index.js'
 const ns = process.env.NS || 'WCMixins'
@@ -18,13 +21,14 @@ const shouldUglify = (options = uglifyOptions, minifier) => process.env.NODE_ENV
   : []
 
 const es = it => ({
-  input: `src/${it}`,
+  input: `${directories.lib}/${it}`,
   output: {
     exports: 'named',
     format: 'umd',
     name: ns,
   },
-  plugins: [babel()].concat(shouldUglify(uglifyOptions)),
+  external: ['@polymer/lit-element'],
+  plugins: [babel({ exclude: ['node_modules/**', '*.json'] }), json()].concat(shouldUglify()),
 })
 
 export default es(entry)
