@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-utils",
-  "version": "0.2.1",
+  "version": "0.3.2",
   "description": "Webcomponent's utilities",
   "bugs": {
     "url": "https://github.com/netology-group/wc-utils/issues"
@@ -11,33 +11,47 @@
   "license": "MIT",
   "author": "",
   "files": [
-    "lib",
+    "dist",
     "es",
-    "dist"
+    "lib"
   ],
-  "main": "lib/index",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "directories": {
     "lib": "src"
   },
   "scripts": {
-    "prebuild": "rm -rf dist lib es",
+    "prebuild": "rm -rf dist es lib",
+    "build": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir lib",
     "build:es": "BABEL_ENV=es babel src --out-dir es",
-    "build:umd": "rollup -c -o dist/index.js",
-    "build:umd:min": "NODE_ENV=production rollup -c -o dist/index.min.js",
-    "build": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:umd": "BABEL_ENV=rollup rollup -c -o dist/index.js",
+    "build:umd:min": "NODE_ENV=production BABEL_ENV=rollup rollup -c -o dist/index.min.js",
     "prepublishOnly": "npm run test && npm run build",
     "test": "eslint ."
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.5.2"
+    "debug": "^4.1.0",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-plugin-annotate-pure-calls": "^0.3.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^5.0.1",
     "eslint-config-adequate": "^1.1.0",
     "rollup": "^0.65.2",
-    "rollup-plugin-terser": "^2.0.2"
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^1.0.1",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "peerDependencies": {
+    "@polymer/lit-element": "~0.5.2"
   }
 }
